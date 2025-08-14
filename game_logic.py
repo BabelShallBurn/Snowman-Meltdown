@@ -38,8 +38,7 @@ def play_game():
             return
         print(f"solution word {display_word}")
         guess = input("Guess a letter: ").lower()
-        print("You guessed:", guess)
-        print(f"mistakes: {mistakes}")        
+        print("You guessed:", guess)     
         guessed_letters.append(guess)
         if not guess in secret_word:
             mistakes += 1
