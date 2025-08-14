@@ -53,6 +53,7 @@ def play_game():
     mistakes = 0
     guessed_letters = []
     secret_word = get_random_word()
+    print(f"length of secret word: {len(secret_word)}")
 
     print("Welcome to Snowman Meltdown!")
 
@@ -60,6 +61,13 @@ def play_game():
         display_game_state(mistakes, secret_word, guessed_letters)
         guess = input("Guess a letter: ").lower()
         print("You guessed:", guess)
+        print(f"mistakes: {mistakes}")        
+        guessed_letters.append(guess)
+        if not guess in secret_word:
+            mistakes += 1
+        if mistakes == len(STAGES):
+            print("Game Over")
+            return
     
 if __name__ == "__main__":
     play_game()
