@@ -43,7 +43,7 @@ def play_game():
         guessed_letters.append(guess)
         if not guess in secret_word:
             mistakes += 1
-        if mistakes == len(STAGES):
+        if mistakes == len(ascii_art.STAGES):
             print("Game Over")
             return
         
