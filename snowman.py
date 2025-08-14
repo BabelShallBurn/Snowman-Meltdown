@@ -56,9 +56,8 @@ def play_game():
 
     print("Welcome to Snowman Meltdown!")
 
-    display_game_state(mistakes, secret_word, guessed_letters)
-
     while True:
+        display_game_state(mistakes, secret_word, guessed_letters)
         guess = input("Guess a letter: ").lower()
         print("You guessed:", guess)
     
