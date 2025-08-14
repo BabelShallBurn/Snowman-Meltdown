@@ -34,7 +34,7 @@ def play_game():
     while True:
         display_word = display_game_state(mistakes, secret_word, guessed_letters)
         if display_word == secret_word:
-            print("You won!")
+            print("You saved the snowman!")
             return
         print(f"solution word {display_word}")
         guess = input("Guess a letter: ").lower()
@@ -44,7 +44,7 @@ def play_game():
         if not guess in secret_word:
             mistakes += 1
         if mistakes == len(ascii_art.STAGES):
-            print("Game Over")
+            print("The snowman melted away...")
             return
         
     
