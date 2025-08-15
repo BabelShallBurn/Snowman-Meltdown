@@ -27,7 +27,6 @@ def play_game():
     mistakes = 0
     guessed_letters = []
     secret_word = get_random_word()
-    print(f"length of secret word: {len(secret_word)}")
 
     print("Welcome to Snowman Meltdown!")
 
@@ -35,16 +34,26 @@ def play_game():
         display_word = display_game_state(mistakes, secret_word, guessed_letters)
         if display_word == secret_word:
             print("You saved the snowman!")
-            return
-        print(f"solution word {display_word}")
+            replay_option = input("Do you want to play again? Enter 1 for yes and 0 for no. ")
+            if replay_option == "1":
+                play_game()
+                break
+            else:
+                break
         guess = input("Guess a letter: ").lower()
-        print("You guessed:", guess)     
-        guessed_letters.append(guess)
-        if not guess in secret_word:
-            mistakes += 1
-        if mistakes == len(ascii_art.STAGES):
-            print("The snowman melted away...")
-            return
+        try:
+            if len(guess) != 1:
+                raise ValueError("guess has to be a single character.")
+            print("You guessed:", guess)     
+            guessed_letters.append(guess)
+            if not guess in secret_word:
+                mistakes += 1
+            if mistakes == len(ascii_art.STAGES):
+                print("The snowman melted away...")
+                return
+        except ValueError as e:
+            print(e)
+        
         
     
 if __name__ == "__main__":
