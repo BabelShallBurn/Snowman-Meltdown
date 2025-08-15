@@ -50,7 +50,12 @@ def play_game():
                 mistakes += 1
             if mistakes == len(ascii_art.STAGES):
                 print("The snowman melted away...")
-                return
+                replay_option = input("Do you want to play again? Enter 1 for yes and 0 for no. ")
+                if replay_option == "1":
+                    play_game()
+                    break
+                else:
+                    break
         except ValueError as e:
             print(e)
         
