@@ -6,11 +6,25 @@ WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
 
 def get_random_word():
-    """Selects a random word from the list."""
+    """selects a random word from the WORDS list
+
+    Returns:
+        str: random chosen word
+    """
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
+    """function that draws snowman and guessed letter after each
+
+    Args:
+        mistakes (int): number of mistakes
+        secret_word (str): word the player has to guess
+        guessed_letters (list): list of already guessed letters
+
+    Returns:
+        str: the word with all correct guessed letters clear and not guessed letters as underscores
+    """
     print(ascii_art.STAGES[mistakes])
     display_word = ""
     for letter in secret_word:
@@ -24,6 +38,11 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def play_game():
+    """main gameplay loop
+
+    Raises:
+        ValueError: raises ValueError if the player picked more than one letter
+    """
     mistakes = 0
     guessed_letters = []
     secret_word = get_random_word()
@@ -44,7 +63,7 @@ def play_game():
         try:
             if len(guess) != 1:
                 raise ValueError("guess has to be a single character.")
-            print("You guessed:", guess)     
+            print("You guessed:", guess)
             guessed_letters.append(guess)
             if not guess in secret_word:
                 mistakes += 1
@@ -58,8 +77,7 @@ def play_game():
                     break
         except ValueError as e:
             print(e)
-        
-        
-    
+
+
 if __name__ == "__main__":
     play_game()
